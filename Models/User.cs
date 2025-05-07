@@ -25,11 +25,14 @@ namespace XClone.Models
         public string CoverImageUrl { get; set; } = string.Empty; // Cover image of the user
 
         [Required]
-        public DateTime CreatedAt { get; set; } // Date when the user was created
-        [AllowNull]
-        public DateTime LastUpdatedAt { get; set; } // Date when the user was last updated
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Date when the user was created
+        [Required]
+        public DateTime LastUpdatedAt { get; set; } = DateTime.UtcNow; // Date when the user was last updated
 
         public ICollection<Post> Posts { get; set; } = new List<Post>(); // Collection of posts created by the user
+        public ICollection<Like> Likes { get; set; } = new List<Like>(); // Collection of likes given by the user
+        public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>(); // Collection of bookmarks created by the user
+        public ICollection<Follow> Followers { get; set; } = new List<Follow>(); // Collection of followers of the user
 
 
     }

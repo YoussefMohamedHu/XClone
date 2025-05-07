@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using XClone.Data;
+
 namespace XClone
 {
     public class Program
@@ -8,7 +11,8 @@ namespace XClone
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<MyDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

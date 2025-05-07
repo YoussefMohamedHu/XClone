@@ -1,14 +1,22 @@
-﻿namespace XClone.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace XClone.Models
 {
-    enum MediaType
+    public enum MediaTypeEnum // Changed from internal to public to fix CS0053  
     {
-        None ,Image , Video
+        None, Image, Video
     }
     public class PostMedia
     {
-        public Guid PostMediaId { get; set; } // Unique identifier for the media
-        public List<string> MediaUrl { get; set; } = default!; // List of URLs for the media
-        public List<string> MediaType { get; set; } = default!; // List of media types (e.g., image, video)
+         // Unique identifier for the media
 
+        public Guid PostMediaId { get; set; } // Unique identifier for the media  
+        [Required]
+        [ForeignKey("PostMediaId")] 
+        public Post Post { get; set; } = default!; // Navigation property to the associated post
+        public List<string> MediaUrl { get; set; } = new(); 
+        public List<MediaTypeEnum> MediaType { get; set; } = new();
+        public DateTime CreatedAt { get; set; } // Date when the media was created
     }
 }
