@@ -24,8 +24,8 @@ namespace XClone.Models
         [AllowNull]
         public Guid PostMediaId { get; set; } = default!; // Identifier for the media associated with the post
 
-        [ForeignKey("PostMediaId")]
-        public PostMedia postMedia { get; set; } = default!; // Media associated with the post
+       
+        public PostMedia PostMedia { get; set; } = default!; // Media associated with the post
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;// Date when the post was created
@@ -37,5 +37,7 @@ namespace XClone.Models
         public User user { get; set; } = default!; // User who created the post
         [Required]
         public ReferenceTypeEnum ReferenceType { get; set; } = ReferenceTypeEnum.None;
+        public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>(); // Collection of bookmarks created by the user
+        public ICollection<Like> Likes { get; set; } = new List<Like>(); // Collection of likes given by the user
     }
 }

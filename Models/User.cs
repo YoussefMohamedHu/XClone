@@ -34,6 +34,7 @@ namespace XClone.Models
         public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>(); // Collection of bookmarks created by the user
         public ICollection<Follow> Followers { get; set; } = new List<Follow>(); // Collection of followers of the user
 
+        public ICollection<Follow> Followings { get; set; } = new List<Follow>(); // Collection of followings of the user
 
     }
 }

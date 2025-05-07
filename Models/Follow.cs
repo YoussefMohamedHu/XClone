@@ -14,7 +14,7 @@ namespace XClone.Models
         public User Follower { get; set; } = default!;
         [Required]
         [ForeignKey("FollowingId")]
-        public User Following = default!;
+        public User Following { get; set; } = default!;
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Date when the follow was created
     }
