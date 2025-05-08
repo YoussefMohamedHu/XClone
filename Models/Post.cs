@@ -9,7 +9,8 @@ namespace XClone.Models
     {
         None,
         repost,
-        quote
+        quote,
+        comment
     }
 
     public class Post

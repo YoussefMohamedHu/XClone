@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using XClone.Data;
+using XClone.Repositories.Concretes;
+using XClone.Repositories.Interfaces;
 
 namespace XClone
 {
@@ -14,6 +16,7 @@ namespace XClone
             builder.Services.AddDbContext<MyDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
